@@ -1,5 +1,6 @@
+import Header from './components/Header.jsx'
 
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  <Header />,
   document.getElementById('root')
 );
