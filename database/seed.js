@@ -88,21 +88,43 @@ let Business = mongoose.model('Business', businessSchema);
 let parentCategories = ["Restaurants", "IT Services & Computer Repair (itservices)"]
 let childCategories = [{
   parent: "Restauraunt",
-  child: ["American (New) (newamerican)",
-  "American (Traditional) (tradamerican)",
-  "Arabian (arabian)",
-  "Argentine (argentine)",
-  "Armenian (armenian)",
-  "Asian Fusion (asianfusion)",
-  "Australian (australian)",
-  "Austrian (austrian)",
-  "Bangladeshi (bangladeshi)",
-  "Barbeque (bbq)"]
+  child: ["American (New)",
+  "American (Traditional)",
+  "Arabian",
+  "Argentine",
+  "Armenian",
+  "Asian Fusion",
+  "Australian",
+  "Austrian",
+  "Bangladeshi",
+  "Barbeque",
+  "Basque",
+  "Belgian",
+  "Brasseries",
+  "Brazilian",
+  "Breakfast & Brunch",
+  "British",
+  "Buffets",
+  "Bulgarian",
+  "Burgers",
+  "Burmese",
+  "Cafes",]
   },{
-  parent: "IT Services & Computer Repair (itservices)",
-  child: ["Data Recovery (datarecovery)",
-  "Mobile Phone Repair (mobilephonerepair)",
-  "Telecommunications (telecommunications)"]
+  parent: "Shopping",
+  child: [
+  "Antiques",
+  "Art Galleries",
+  "Arts & Crafts",
+  "Brewing Supplies",
+  "Bridal",
+  "Cannabis Dispensaries",
+  "Computers",
+  "Cosmetics & Beauty Supply",
+  "Customized Merchandise",
+  "Department Stores",
+  "Discount Store",
+  "Drones"
+  ]
   }]
 
 for (let i = 0; i < data.data.length; i++){

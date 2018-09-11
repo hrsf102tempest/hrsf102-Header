@@ -1,4 +1,29 @@
-import { relative } from "path";
+import styled, { css } from 'styled-components';
+import React, {Component} from 'react'
+import DollarSignsAndCategories from './dollarsignsandCategories.jsx';
+import Categories from './categories.jsx';
+import StarsAndReviews from './stars.jsx'
+
+const Title = styled.h1`
+  font-size: 30px;
+  color: #333;
+  margin: 0 6px;
+`;
+
+const BizWrapper = styled.div`
+  width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+  font-weight: 700:
+`
+const ClaimedText = styled.div`
+  font-size: 14px;
+  display: inline-block;  
+`
+
+
+
 
 class Header extends React.Component {
   constructor(props){
@@ -35,27 +60,23 @@ class Header extends React.Component {
   }
 
   render() {
-    const bizDetails = {
-      width: "960px",
-      margin: "0 auto",
-      padding: "0 15px",
-      display: "block",
-      fontfamily: "Helvetica Neue"
-    }
-    const bizPageHeader = {
-      position: "relative",
-      display: "flex",
-      alignitems: "center",
-      width: "100%",
-      marginbottom: "13px",
-      fontsize: "16px",
-      lineheight: "1.3125em",
-    }
     console.log("inital state", this.state);
+    
     return (
-      <div style={bizDetails}>
-        <div style={bizPageHeader}>Hello! {this.state.businessData.name}</div>
-      </div>
+      <BizWrapper>
+        <Title>
+          {this.state.businessData.name} 
+              {this.state.businessData.claimed === true &&
+                <ClaimedText> 
+                <i className="fas fa-check-circle"></i> 
+                Claimed
+                </ ClaimedText> 
+              }
+        </Title>
+        <StarsAndReviews reviews={this.state.businessData.reviews} numberOfReviews={this.state.businessData.totalReviews}/>
+        <DollarSignsAndCategories dollarSigns={this.state.businessData.dollarSigns} categories={this.state.businessData.categories}/> 
+      </BizWrapper>
+
     )
   }
 }
