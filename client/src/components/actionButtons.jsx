@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
+import React, {Component} from 'react'
 
 const ActionButtonsDiv = styled.div`
   text-align: right;
+  display: inline;
   float: right;
 `
 const WriteAReview = styled.div`
@@ -18,14 +20,13 @@ const WriteAReview = styled.div`
   font-size: 14px;
   font-weight: bold;
   &:hover{
-    color: yellow;
+    background: #ff1a1a;
   }
-`
+  `
 const Star = styled.i`
 
 `
-
-const SideButton = styled.a`
+const SideButton = styled.button`
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 1px;
   border-width: 1px;
@@ -35,18 +36,30 @@ const SideButton = styled.a`
   color: #666;
   background-color: #f7f7f7;
   font-weight: bold;
-  font-size: .9rem;
+  font-size: .7rem;
+  display: inline;
+  &:hover{
+    background: #fffff1;
+  }
 `
-
-const ActionButtons = (props) => {
-
-  return (
-    <ActionButtonsDiv>
-      <WriteAReview><Star className="fas fa-star" /> Write A Review</WriteAReview>
-      <SideButton><i className="fas fa-camera"></i>  Add Photo</SideButton>
-      <SideButton><i class="fas fa-share-square"></i>  Share</SideButton>
-      <SideButton><i class="fas fa-bookmark"></i>  Save</SideButton>
-    </ActionButtonsDiv>
+const WriteAReviewLink = styled.a`
+  text-decoration: none;
+  color: white;
+`
+const Link = styled.a`
+  color: #666;
+  text-decoration: none;
+`
+  const ActionButtons = (props) => {
+    
+    return (
+      <ActionButtonsDiv>
+        <WriteAReview><Star className="fas fa-star" /><WriteAReviewLink href="#">Write A Review</ WriteAReviewLink></WriteAReview>
+        <SideButton><Link href="#"><i className="fas fa-camera"></i>  Add Photo</Link></SideButton>
+        <SideButton><Link href="#"><i className="fas fa-share-square"></i>  Share</Link></SideButton>
+        <SideButton><Link href="#"><i className="fas fa-bookmark"></i>  Save</Link></SideButton>
+      </ ActionButtonsDiv>
+ 
   )
 }
 
