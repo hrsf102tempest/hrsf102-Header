@@ -1,13 +1,12 @@
 import styled, { css } from 'styled-components';
 import React, {Component} from 'react'
 import DollarSignsAndCategories from './dollarsignsandCategories.jsx';
-import Categories from './categories.jsx';
 import StarsAndReviews from './stars.jsx'
 
 const Title = styled.h1`
   font-size: 30px;
   color: #333;
-  margin: 0 6px;
+  margin: 0;
 `;
 
 const BizWrapper = styled.div`
@@ -17,9 +16,15 @@ const BizWrapper = styled.div`
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
   font-weight: 700:
 `
+const ClaimedCheck = styled.i`
+  color: #0073BB;
+  font-size: 1.10rem;
+  padding-right: 5px;
+`
 const ClaimedText = styled.div`
   font-size: 14px;
   display: inline-block;  
+  font-weight: 400;
 `
 
 
@@ -65,17 +70,17 @@ class Header extends React.Component {
     return (
       <BizWrapper>
         <Title>
-          {this.state.businessData.name} 
+          {this.state.businessData.name + " "} 
               {this.state.businessData.claimed === true &&
                 <ClaimedText> 
-                <i className="fas fa-check-circle"></i> 
-                Claimed
+                <ClaimedCheck className="fas fa-check-circle" /> 
+                 Claimed
                 </ ClaimedText> 
               }
         </Title>
         <StarsAndReviews reviews={this.state.businessData.reviews} numberOfReviews={this.state.businessData.totalReviews}/>
         <DollarSignsAndCategories dollarSigns={this.state.businessData.dollarSigns} categories={this.state.businessData.categories}/> 
-      </BizWrapper>
+      </ BizWrapper>
 
     )
   }

@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import React from 'react'
+import ActionButtons from './actionButtons.jsx';
 
 const StarWrapper = styled.div`
   margin-top: 9px;
@@ -35,6 +36,7 @@ const StarsAndReviews = (props) => {
   return (
     <StarWrapper>
       <Rating height="303" width="84" /> 
+      <ActionButtons />
       <NumberOfReviews> {props.numberOfReviews} reviews</NumberOfReviews>
     </StarWrapper>
   )
