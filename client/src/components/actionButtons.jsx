@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import React, {Component} from 'react';
-import {Modal, ModalContent} from './modal.jsx';
+import {Modal, ModalContent} from './modalshared.jsx';
 
 const ActionButtonsDiv = styled.div`
   text-align: right;

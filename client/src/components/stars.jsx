@@ -61,13 +61,12 @@ const ToolTipNext = styled.span`
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
-  opacity: 0.75;
+  opacity: 0.9;
 
   position: absolute;
   z-index: 1;
-  top: -30px;
-  // bottom: 100%;
-  // left: 28%;
+  top: -35px;
+  left: 25px;
   margin-left: -50px;
   &:after {
     content: "";

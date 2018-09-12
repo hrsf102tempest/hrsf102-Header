@@ -29,9 +29,10 @@ const EditButton = styled.button`
   background-color: #F5F5F5;
   font-size: .7rem;
 `
-const Link = styled.a`
+const EditLink = styled.a`
   text-decoration: none;
   color: #A3A3A3;
+  position: relative; 
   &:hover #ToolTip{
     visibility: visible;
   }
@@ -47,13 +48,12 @@ const ToolTip = styled.span`
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
-  opacity: 0.75;
+  opacity: 0.9;
 
   position: absolute;
   z-index: 1;
-  left: 43%;
-  top: 20%;
-  margin-left: -45px;
+  top: -35px;
+  left: -25px;
   &:after {
     content: "";
     position: absolute;
@@ -87,7 +87,7 @@ const DollarSignsAndCategories = (props) => {
   
   return (
     <Dollars>
-      {dollarSigns}<DollarsDot className="fas fa-circle fa-xs"></DollarsDot>{categories.map((category) => category)}<EditButton><Link href="#"><i className="fas fa-pencil-alt"></i> Edit<ToolTip id="ToolTip">Edit Categories</ToolTip></Link></EditButton>
+      {dollarSigns}<DollarsDot className="fas fa-circle fa-xs"></DollarsDot>{categories.map((category) => category)}<EditButton><EditLink href="#"><i className="fas fa-pencil-alt"></i> Edit<ToolTip id="ToolTip">Edit Categories</ToolTip></EditLink></EditButton>
     </Dollars>
   )
 }
