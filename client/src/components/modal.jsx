@@ -15,9 +15,9 @@ const ModalContent = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -5%);
   background-color: white;
-  padding: 12px;
+  padding: 24px;
   border-radius: 5px;
   border-color: rgb(153, 153, 153);
 `

@@ -24,7 +24,9 @@ const Rating = styled.div`
   width: 132px;
   height: 24px;
   background-image: url("stars.png");
-  background-position: 0 -168px;
+  // Yelp renders their stars by showing a certain part of stars.png based on the rating. 
+  // I created this formula by messing around with different yelp ratings I found for businesses 
+  background-position: 0 ${props => ((-216 - (2* (5 - props.averageScore)) * -24) + 'px')};
   position: relative;
 `
 const DetailButton = styled.button`
@@ -43,6 +45,7 @@ const Chart = styled.i`
 const Link = styled.a`
   text-decoration: none;
   color: #A3A3A3;
+  position: relative;
   &:hover #ToolTipNext{
     visibility: visible;
   }
@@ -62,8 +65,9 @@ const ToolTipNext = styled.span`
 
   position: absolute;
   z-index: 1;
-  bottom: 100%;
-  left: 28%;
+  top: -30px;
+  // bottom: 100%;
+  // left: 28%;
   margin-left: -50px;
   &:after {
     content: "";
@@ -77,12 +81,24 @@ const ToolTipNext = styled.span`
   }
 `
 const StarsAndReviews = (props) => {
+  // this section allows us to find the average score given the score for each month. 
+  // take the score per month and divide it by the number of months coutned
+  let averageScore = 0;
+  let monthsCounter = 0;
+  for (let year in props.reviews){
+    for (let month in props.reviews[year]){
+      averageScore += props.reviews[year][month];
+      monthsCounter ++;
+    }
+  }
 
-  console.log("props from the stars side", props)
-
+  // after finding the average score, we have to to round the number to the nearest .5 (because thats how yelp displays their ratings)
+  // to do this, double the average score, round it to the nearest int, then divide the result by 2. 
+  averageScore = (Math.round((averageScore / monthsCounter) * 2) / 2);
+  console.log("final average score", averageScore);
   return (
     <StarWrapper>
-      <Rating /> 
+      <Rating averageScore={averageScore}/> 
       <NumberOfReviews> {props.numberOfReviews} reviews <DetailButton><Link href="#"><Chart className="fas fa-chart-bar"></Chart> Details<ToolTipNext id="ToolTipNext">Rating Detail</ToolTipNext></Link></DetailButton><ActionButtons /></NumberOfReviews>
     </StarWrapper>
   )
