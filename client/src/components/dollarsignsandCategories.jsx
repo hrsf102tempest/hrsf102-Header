@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import React from 'react'
 
 const Dollars = styled.div`
-  line-height: 21px;
   color: #666;
 `
 
@@ -33,14 +32,14 @@ const EditButton = styled.button`
 const Link = styled.a`
   text-decoration: none;
   color: #A3A3A3;
-  &:hover #ToolTipNext{
+  &:hover #ToolTip{
     visibility: visible;
   }
   &:hover{
     color: black;
   }
 `
-const ToolTipNext = styled.span`
+const ToolTip = styled.span`
   visibility: hidden;
   width: 90px;
   background-color: black;
@@ -52,8 +51,8 @@ const ToolTipNext = styled.span`
 
   position: absolute;
   z-index: 1;
-  bottom: 91%;
-  left: 42%;
+  left: 43%;
+  top: 20%;
   margin-left: -45px;
   &:after {
     content: "";
@@ -88,7 +87,7 @@ const DollarSignsAndCategories = (props) => {
   
   return (
     <Dollars>
-      {dollarSigns}<DollarsDot className="fas fa-circle fa-xs"></DollarsDot>{categories.map((category) => category)}<EditButton><Link href="#"><i className="fas fa-pencil-alt"></i> Edit<ToolTipNext id="ToolTipNext">Edit Categories</ToolTipNext></Link></EditButton>
+      {dollarSigns}<DollarsDot className="fas fa-circle fa-xs"></DollarsDot>{categories.map((category) => category)}<EditButton><Link href="#"><i className="fas fa-pencil-alt"></i> Edit<ToolTip id="ToolTip">Edit Categories</ToolTip></Link></EditButton>
     </Dollars>
   )
 }

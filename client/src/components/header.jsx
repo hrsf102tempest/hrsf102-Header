@@ -27,9 +27,6 @@ const ClaimedText = styled.div`
   font-weight: 400;
 `
 
-
-
-
 class Header extends React.Component {
   constructor(props){
     super (props)
@@ -81,7 +78,6 @@ class Header extends React.Component {
         <StarsAndReviews reviews={this.state.businessData.reviews} numberOfReviews={this.state.businessData.totalReviews}/>
         <DollarSignsAndCategories dollarSigns={this.state.businessData.dollarSigns} categories={this.state.businessData.categories}/> 
       </ BizWrapper>
-
     )
   }
 }
