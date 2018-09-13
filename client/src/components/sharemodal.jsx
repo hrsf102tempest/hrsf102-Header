@@ -17,6 +17,10 @@ const ModalClose = styled.span`
   position: absolute;
   right: 28px;
   color: #666; 
+  &:hover{
+    color: #BCBCBC;
+    cursor: pointer;
+  }
 `
 
 const ShareButtonContainer = styled.div`

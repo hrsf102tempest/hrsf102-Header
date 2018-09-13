@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const pageUrl = 'http://127.0.0.1:3004/';
+const pageUrl = 'http://127.0.0.1:3004/biz/?id=';
 
 let page;
 let browser;
@@ -19,16 +19,20 @@ afterAll(() => {
   browser.close();
 });
 
-describe('first test', () => {
+describe('Should dynamically render business name and claimed', () => {
 
   beforeEach(async () => {
-    await page.goto(pageUrl, {waitUntil: 'networkidle2'});
+    await page.goto(`${pageUrl}1#`, {waitUntil: 'networkidle2'});
   });
 
-  test ('inital test! ', async () => {
-    var div = 'h1'
-    const title = await page.$eval(div, e => e.textContent);
-    expect (title).toEqual("Hello, world!")
+  test ('Test if ID 1 is Nevada Discount Nutrition Claimed', async () => {
+    const title = await page.$eval('#title', e => e.textContent);
+    expect (title).toEqual("Nevada Discount Nutrition Claimed")
+  });
+
+  test ('Test if ID 1 is has correct dollar signs', async () => {
+    const dollarsigns = await page.$eval('#dollarsigns', e => e.textContent);
+    expect (dollarsigns).toEqual(`$Brewing Supplies, Art Galleries, American (New) EditEdit Categories`)
   });
 });
 

@@ -62,11 +62,9 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log("inital state", this.state);
-    
     return (
       <BizWrapper>
-        <Title>
+        <Title id="title">
           {this.state.businessData.name + " "} 
               {this.state.businessData.claimed === true &&
                 <ClaimedText> 
