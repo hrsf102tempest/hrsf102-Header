@@ -87,7 +87,15 @@ const DollarSignsAndCategories = (props) => {
   
   return (
     <Dollars id="dollarsigns">
-      {dollarSigns}<DollarsDot className="fas fa-circle fa-xs"></DollarsDot>{categories.map((category) => category)}<EditButton><EditLink href="#"><i className="fas fa-pencil-alt"></i> Edit<ToolTip id="ToolTip">Edit Categories</ToolTip></EditLink></EditButton>
+      {dollarSigns}
+      <DollarsDot className="fas fa-circle fa-xs"></DollarsDot>
+      {categories.map((category) => category)}
+      <EditButton>
+        <EditLink href="#">
+          <i className="fas fa-pencil-alt"></i> Edit
+          <ToolTip id="ToolTip">Edit Categories</ToolTip>
+        </EditLink>
+      </EditButton>
     </Dollars>
   )
 }

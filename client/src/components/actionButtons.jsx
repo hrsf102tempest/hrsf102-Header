@@ -92,7 +92,10 @@ class ActionButtons extends React.Component {
           </Modal>
             {modalContentState}
 
-        <WriteAReview><Star className="fas fa-star" /><WriteAReviewLink href="#">Write A Review</ WriteAReviewLink></WriteAReview>
+        <WriteAReview>
+          <Star className="fas fa-star" />
+          <WriteAReviewLink href="#">Write A Review</ WriteAReviewLink>
+        </WriteAReview>
         <SideButton>
           <Link href="#">
           <i className="fas fa-camera"></i>  Add Photo
