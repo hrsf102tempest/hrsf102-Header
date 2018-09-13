@@ -28,6 +28,7 @@ const EditButton = styled.button`
   color: #A3A3A3;
   background-color: #F5F5F5;
   font-size: .7rem;
+  z-index: 1000;
 `
 const EditLink = styled.a`
   text-decoration: none;
@@ -86,10 +87,14 @@ const DollarSignsAndCategories = (props) => {
   }
   
   return (
-    <Dollars id="dollarsigns">
-      {dollarSigns}
+    <Dollars>
+      <span id="dollarsigns">
+        {dollarSigns}
+      </span>
       <DollarsDot className="fas fa-circle fa-xs"></DollarsDot>
-      {categories.map((category) => category)}
+      <span id="categories">
+        {categories.map((category) => category)}
+      </span>
       <EditButton>
         <EditLink href="#">
           <i className="fas fa-pencil-alt"></i> Edit

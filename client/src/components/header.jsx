@@ -64,14 +64,16 @@ class Header extends React.Component {
   render() {
     return (
       <BizWrapper>
-        <Title id="title">
-          {this.state.businessData.name + " "} 
-              {this.state.businessData.claimed === true &&
-                <ClaimedText> 
-                <ClaimedCheck className="fas fa-check-circle" /> 
-                 Claimed
-                </ ClaimedText> 
-              }
+        <Title>
+          <span id="title">
+            {this.state.businessData.name}
+          </span>
+            {this.state.businessData.claimed === true &&
+              <ClaimedText> 
+              <ClaimedCheck className="fas fa-check-circle" /> 
+                Claimed
+              </ ClaimedText> 
+            }
         </Title>
         <StarsAndReviews reviews={this.state.businessData.reviews} numberOfReviews={this.state.businessData.totalReviews}/>
         <DollarSignsAndCategories dollarSigns={this.state.businessData.dollarSigns} categories={this.state.businessData.categories}/> 

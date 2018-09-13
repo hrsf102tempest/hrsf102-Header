@@ -97,8 +97,20 @@ const StarsAndReviews = (props) => {
   console.log("final average score", averageScore);
   return (
     <StarWrapper>
-      <Rating averageScore={averageScore}/> 
-      <NumberOfReviews> {props.numberOfReviews} reviews <DetailButton><Link href="#"><Chart className="fas fa-chart-bar"></Chart> Details<ToolTipNext id="ToolTipNext">Rating Detail</ToolTipNext></Link></DetailButton><ActionButtons /></NumberOfReviews>
+      <Rating averageScore={averageScore} id="rating"/> 
+      <NumberOfReviews>
+        <span id="numberofreviews">
+          {props.numberOfReviews} reviews
+        </span>
+       <DetailButton>
+        <Link href="#">
+          <Chart className="fas fa-chart-bar"></Chart>
+          Details<ToolTipNext id="ToolTipNext">
+          Rating Detail</ToolTipNext>
+        </Link>
+      </DetailButton>
+      <ActionButtons />
+      </NumberOfReviews>
     </StarWrapper>
   )
 }
