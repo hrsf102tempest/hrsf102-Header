@@ -18,6 +18,8 @@ const CategoryLink = styled.a`
   color: #0073BB;
   text-decoration: none;
 `
+CategoryLink.displayName = "CateogryLink"
+
 const EditButton = styled.button`
   border-radius: 3px;
   border-width: 1px;
@@ -66,6 +68,18 @@ const ToolTip = styled.span`
     border-color: black transparent transparent transparent;
   }
 `
+ToolTip.displayName = 'ToolTip';
+
+const DollarSigns = styled.span`
+`
+
+DollarSigns.displayName = 'DollarSigns';
+
+const Categories = styled.span`
+`
+
+Categories.displayName = 'Categories';
+
 const DollarSignsAndCategories = (props) => {
 
   let dollarSigns = ""
@@ -88,13 +102,13 @@ const DollarSignsAndCategories = (props) => {
   
   return (
     <Dollars>
-      <span id="dollarsigns">
+      <DollarSigns id="dollarsigns">
         {dollarSigns}
-      </span>
+      </DollarSigns>
       <DollarsDot className="fas fa-circle fa-xs"></DollarsDot>
-      <span id="categories">
+      <Categories id="categories">
         {categories.map((category) => category)}
-      </span>
+      </Categories>
       <EditButton>
         <EditLink href="#">
           <i className="fas fa-pencil-alt"></i> Edit

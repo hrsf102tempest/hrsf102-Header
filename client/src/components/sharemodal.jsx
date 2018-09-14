@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import React, {Component} from 'react';
 import {Modal, ModalContent} from './modalshared.jsx';
 
 const ModalTopHeader = styled.div`
@@ -22,6 +23,7 @@ const ModalClose = styled.span`
     cursor: pointer;
   }
 `
+ModalClose.displayName = "ModalClose"
 
 const ShareButtonContainer = styled.div`
   display: flex;

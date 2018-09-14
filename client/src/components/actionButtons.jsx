@@ -8,6 +8,8 @@ const ActionButtonsDiv = styled.div`
   display: inline;
   float: right;
 `
+ActionButtonsDiv.displayName = 'ActionButtonsDiv';
+
 const WriteAReview = styled.div`
   border-color: #8d0005;
   border-radius: 3px;
@@ -25,6 +27,9 @@ const WriteAReview = styled.div`
     background: #ff1a1a;
   }
 `
+
+WriteAReview.displayName = 'WriteAReview';
+
 const Star = styled.i`
 
 `
@@ -44,10 +49,14 @@ const SideButton = styled.button`
     background: #fffff1;
   }
 `
+SideButton.displayName = 'SideButton';
+
 const WriteAReviewLink = styled.a`
   text-decoration: none;
   color: white;
 `
+WriteAReviewLink.displayName = "WriteAReviewLink"
+
 const Link = styled.a`
   color: #666;
   text-decoration: none;
@@ -102,13 +111,13 @@ class ActionButtons extends React.Component {
           </Link>
         </SideButton>
 
-        <SideButton onClick={() => this.toggleModal("share")}>
+        <SideButton id="ShareButton" onClick={() => this.toggleModal("share")}>
           <Link href="#">
             <i className="fas fa-share-square"></i>  Share
           </Link>
         </SideButton>
 
-        <SideButton onClick={() => this.toggleModal("save")}>
+        <SideButton id="SaveButton" onClick={() => this.toggleModal("save")}>
           <Link href="#">
           <i className="fas fa-bookmark"></i>  Save
           </Link>

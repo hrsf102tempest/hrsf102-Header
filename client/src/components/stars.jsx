@@ -8,7 +8,7 @@ const StarWrapper = styled.div`
   line-height: 24px;
   display: blocK;
 `
-const NumberOfReviews = styled.div`
+const ReviewsSection = styled.div`
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   font-size: 16px;
   color: #666666;
@@ -29,6 +29,8 @@ const Rating = styled.div`
   background-position: 0 ${props => ((-216 - (2* (5 - props.averageScore)) * -24) + 'px')};
   position: relative;
 `
+Rating.displayName = "Rating"
+
 const DetailButton = styled.button`
   border-radius: 3px;
   border-width: 1px;
@@ -53,6 +55,10 @@ const Link = styled.a`
     color: black;
   }
 `
+const NumberOfReviews = styled.span`
+`
+NumberOfReviews.displayName = "NumberOfReviews"
+
 const ToolTipNext = styled.span`
   visibility: hidden;
   width: 100px;
@@ -98,10 +104,10 @@ const StarsAndReviews = (props) => {
   return (
     <StarWrapper>
       <Rating averageScore={averageScore} id="rating"/> 
-      <NumberOfReviews>
-        <span id="numberofreviews">
+      <ReviewsSection>
+        <NumberOfReviews id="numberofreviews">
           {props.numberOfReviews} reviews
-        </span>
+        </NumberOfReviews>
        <DetailButton>
         <Link href="#">
           <Chart className="fas fa-chart-bar"></Chart>
@@ -110,9 +116,9 @@ const StarsAndReviews = (props) => {
         </Link>
       </DetailButton>
       <ActionButtons />
-      </NumberOfReviews>
+      </ReviewsSection>
     </StarWrapper>
   )
 }
 
-export default StarsAndReviews;
+export default StarsAndReviews
