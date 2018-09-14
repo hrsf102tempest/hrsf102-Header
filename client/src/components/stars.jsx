@@ -8,6 +8,7 @@ const StarWrapper = styled.div`
   line-height: 24px;
   display: blocK;
 `
+
 const ReviewsSection = styled.div`
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   font-size: 16px;
@@ -27,7 +28,7 @@ const Rating = styled.div`
   // Yelp renders their stars by showing a certain part of stars.png based on the rating. 
   // I created this formula by messing around with different yelp ratings I found for businesses 
   background-position: 0 ${props => ((-216 - (2* (5 - props.averageScore)) * -24) + 'px')};
-  position: relative;
+  position: relative; 
 `
 Rating.displayName = "Rating"
 
@@ -43,7 +44,9 @@ const DetailButton = styled.button`
   font-size: .7rem;
   `
 const Chart = styled.i`
-  `
+  padding-right: 5px;
+`
+
 const Link = styled.a`
   text-decoration: none;
   color: #A3A3A3;

@@ -22,9 +22,9 @@ const ModalClose = styled.span`
     color: #BCBCBC;
     cursor: pointer;
   }
-`
+  `
 ModalClose.displayName = "ModalClose"
-
+  
 const ShareButtonContainer = styled.div`
   display: flex;
   margin: 20px 0px;

@@ -17,6 +17,9 @@ const DollarsDot = styled.i`
 const CategoryLink = styled.a`
   color: #0073BB;
   text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
 `
 CategoryLink.displayName = "CateogryLink"
 
@@ -30,7 +33,6 @@ const EditButton = styled.button`
   color: #A3A3A3;
   background-color: #F5F5F5;
   font-size: .7rem;
-  z-index: 1000;
 `
 const EditLink = styled.a`
   text-decoration: none;
@@ -43,6 +45,10 @@ const EditLink = styled.a`
     color: black;
   }
 `
+const EditIcon = styled.i`
+  padding-right: 2px;
+`
+
 const ToolTip = styled.span`
   visibility: hidden;
   width: 90px;
@@ -111,7 +117,7 @@ const DollarSignsAndCategories = (props) => {
       </Categories>
       <EditButton>
         <EditLink href="#">
-          <i className="fas fa-pencil-alt"></i> Edit
+          <EditIcon className="fas fa-pencil-alt"></EditIcon> Edit
           <ToolTip id="ToolTip">Edit Categories</ToolTip>
         </EditLink>
       </EditButton>

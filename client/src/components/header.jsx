@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import React, {Component} from 'react'
 import DollarSignsAndCategories from './dollarsignsandCategories.jsx';
 import StarsAndReviews from './stars.jsx'
+import { WSASERVICE_NOT_FOUND } from 'constants';
 
 const Title = styled.h1`
   font-size: 30px;
@@ -16,6 +17,7 @@ const BizWrapper = styled.div`
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
   font-weight: 700:
 `
+
 const ClaimedCheck = styled.i`
   color: #0073BB;
   font-size: 1.10rem;

@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import React, {Component} from 'react';
 import {Modal, ModalContent} from './modalshared.jsx';
 import ShareModal from './sharemodal.jsx'
+import SaveModal from './saveModal.jsx'
 
 const ActionButtonsDiv = styled.div`
   text-align: right;
@@ -31,13 +32,12 @@ const WriteAReview = styled.div`
 WriteAReview.displayName = 'WriteAReview';
 
 const Star = styled.i`
-
+  padding-right: 5px;
 `
 const SideButton = styled.button`
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 1px;
   border-width: 1px;
-  border-style: solid;
   border-color: #ccc;
   padding: 8px;
   color: #666;
@@ -47,6 +47,42 @@ const SideButton = styled.button`
   display: inline;
   &:hover{
     background: #fffff1;
+    cursor: pointer;
+  }
+`
+const SideButtonPhoto = styled.button`
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px;
+  border-width: 1px;
+  border-color: #ccc;
+  border-right: none;
+  padding: 8px;
+  color: #666;
+  background-color: #f7f7f7;
+  font-weight: bold;
+  font-size: .7rem;
+  display: inline;
+  &:hover{
+    background: #fffff1;
+    cursor: pointer;
+  }
+`
+
+const SideButtonShare = styled.button`
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px;
+  border-width: 1px;
+  border-color: #ccc;
+  border-right: none;
+  padding: 8px;
+  color: #666;
+  background-color: #f7f7f7;
+  font-weight: bold;
+  font-size: .7rem;
+  display: inline;
+  &:hover{
+    background: #fffff1;
+    cursor: pointer;
   }
 `
 SideButton.displayName = 'SideButton';
@@ -68,7 +104,7 @@ class ActionButtons extends React.Component {
     
     this.state = {
       isModal: false, // should default to false
-      modalState: "" // should default to "" 
+      modalState: null // should default to "" 
     }
     this.toggleModal = this.toggleModal.bind(this);
     }
@@ -88,10 +124,7 @@ class ActionButtons extends React.Component {
       if (this.state.modalState === "share") {
         modalContentState = <ShareModal toggleModal={this.toggleModal}/>
       } else if (this.state.modalState === "save"){
-        modalContentState = <ModalContent>
-          <div>save</div>
-          <div onClick={() => this.toggleModal(null)}>Close</div>
-        </ModalContent>
+        modalContentState = <SaveModal toggleModal={this.toggleModal}/>
       }
 
 
@@ -99,23 +132,23 @@ class ActionButtons extends React.Component {
         <ActionButtonsDiv>
           <Modal onClick={() => this.toggleModal(null)} isModal={this.state.isModal}>
           </Modal>
-            {modalContentState}
+          {modalContentState}
 
         <WriteAReview>
           <Star className="fas fa-star" />
           <WriteAReviewLink href="#">Write A Review</ WriteAReviewLink>
         </WriteAReview>
-        <SideButton>
+        <SideButtonPhoto>
           <Link href="#">
           <i className="fas fa-camera"></i>  Add Photo
           </Link>
-        </SideButton>
+        </SideButtonPhoto>
 
-        <SideButton id="ShareButton" onClick={() => this.toggleModal("share")}>
+        <SideButtonShare id="ShareButton" onClick={() => this.toggleModal("share")}>
           <Link href="#">
             <i className="fas fa-share-square"></i>  Share
           </Link>
-        </SideButton>
+        </SideButtonShare>
 
         <SideButton id="SaveButton" onClick={() => this.toggleModal("save")}>
           <Link href="#">
