@@ -103,7 +103,7 @@ const SignUpForm = styled.form`
 
 const SignUpLabel = styled.label`
   color: black;
-  font-weight: 600;
+  font-weight: bold;
   display: inline-block;
   margin-bottom: 3px;
   font-size: 14px;

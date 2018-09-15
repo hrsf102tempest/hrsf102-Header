@@ -38,8 +38,8 @@ class Header extends React.Component {
 
     this.state = {
       businessData: {},
-      isModal: true, // should default to false
-      modalState: 'edit' // should default to "" 
+      isModal: false, // should default to false
+      modalState: null // should default to "" 
     }
     this.toggleModal = this.toggleModal.bind(this);
   }
