@@ -175,6 +175,9 @@ const ShareModalButton = styled.div`
 
 const EditModal = (props) => {
   console.log("props from edit modal", props)
+
+  const editCategoriesToRender = [];
+
   return (
     <ModalContent>
       <ModalTopHeader>
