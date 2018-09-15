@@ -1,8 +1,5 @@
 import styled, { css } from 'styled-components';
 import React, {Component} from 'react';
-import {Modal, ModalContent} from './modalshared.jsx';
-import ShareModal from './sharemodal.jsx'
-import SaveModal from './saveModal.jsx'
 
 const ActionButtonsDiv = styled.div`
   text-align: right;
@@ -98,66 +95,33 @@ const Link = styled.a`
   text-decoration: none;
 `
 
-class ActionButtons extends React.Component {
-  constructor(props){
-    super(props)
-    
-    this.state = {
-      isModal: false, // should default to false
-      modalState: null // should default to "" 
-    }
-    this.toggleModal = this.toggleModal.bind(this);
-    }
+const ActionButtons = (props) => {  
+  console.log("props from action buttons", props)
+  return (
+    <ActionButtonsDiv>
+    <WriteAReview>
+      <Star className="fas fa-star" />
+      <WriteAReviewLink href="#">Write A Review</ WriteAReviewLink>
+    </WriteAReview>
+    <SideButtonPhoto>
+      <Link href="#">
+      <i className="fas fa-camera"></i>  Add Photo
+      </Link>
+    </SideButtonPhoto>
 
-  toggleModal(modalType){
-    this.setState({
-      isModal: !this.state.isModal,
-      modalState: modalType
-    })
-    console.log(this.state)
-  }
-    
-    render(){
-      // conditional rendering of modal content state
-      let modalContentState
-      
-      if (this.state.modalState === "share") {
-        modalContentState = <ShareModal toggleModal={this.toggleModal}/>
-      } else if (this.state.modalState === "save"){
-        modalContentState = <SaveModal toggleModal={this.toggleModal}/>
-      }
+    <SideButtonShare id="ShareButton" onClick={() => props.toggleModal("share")}>
+      <Link href="#">
+        <i className="fas fa-share-square"></i>  Share
+      </Link>
+    </SideButtonShare>
 
-
-      return (
-        <ActionButtonsDiv>
-          <Modal onClick={() => this.toggleModal(null)} isModal={this.state.isModal}>
-          </Modal>
-          {modalContentState}
-
-        <WriteAReview>
-          <Star className="fas fa-star" />
-          <WriteAReviewLink href="#">Write A Review</ WriteAReviewLink>
-        </WriteAReview>
-        <SideButtonPhoto>
-          <Link href="#">
-          <i className="fas fa-camera"></i>  Add Photo
-          </Link>
-        </SideButtonPhoto>
-
-        <SideButtonShare id="ShareButton" onClick={() => this.toggleModal("share")}>
-          <Link href="#">
-            <i className="fas fa-share-square"></i>  Share
-          </Link>
-        </SideButtonShare>
-
-        <SideButton id="SaveButton" onClick={() => this.toggleModal("save")}>
-          <Link href="#">
-          <i className="fas fa-bookmark"></i>  Save
-          </Link>
-        </SideButton>
-    </ActionButtonsDiv>
-    )
-  }
+    <SideButton id="SaveButton" onClick={() => props.toggleModal("save")}>
+      <Link href="#">
+      <i className="fas fa-bookmark"></i>  Save
+      </Link>
+    </SideButton>
+</ActionButtonsDiv>
+)
 }
 
 

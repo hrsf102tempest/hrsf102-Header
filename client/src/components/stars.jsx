@@ -103,7 +103,7 @@ const StarsAndReviews = (props) => {
   // after finding the average score, we have to to round the number to the nearest .5 (because thats how yelp displays their ratings)
   // to do this, double the average score, round it to the nearest int, then divide the result by 2. 
   averageScore = (Math.round((averageScore / monthsCounter) * 2) / 2);
-  console.log("final average score", averageScore);
+  console.log("Props from Stars", props)
   return (
     <StarWrapper>
       <Rating averageScore={averageScore} id="rating"/> 
@@ -118,7 +118,7 @@ const StarsAndReviews = (props) => {
           Rating Detail</ToolTipNext>
         </Link>
       </DetailButton>
-      <ActionButtons />
+      <ActionButtons toggleModal={props.toggleModal} />
       </ReviewsSection>
     </StarWrapper>
   )

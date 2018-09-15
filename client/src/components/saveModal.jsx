@@ -5,13 +5,14 @@ import React, {Component} from 'react';
 const ModalContent = styled.div`
   width: 450px;
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, -5%);
   background-color: white;
   padding: 24px;
   border-radius: 5px;
   border-color: rgb(153, 153, 153);
+  z-index: 3000;
 `
 
 const ModalTopHeader = styled.div`
@@ -82,29 +83,6 @@ const SignUpWithGoogle = styled.div`
     background-color: #f5f5f5;;
 }
 `
-const PesudoInput = styled.div`
-  border: solid 1px;
-  height: 35px;
-  text-align: left;
-  padding-left: 10px;
-  display: flex;
-  border-color: rgb(153,153,153);
-  border-radius: 5px;  
-  `
-const ShareButton = styled.i`
-  color: #A3A3A3;
-  display: block;
-  position: relative;
-  text-align: center;
-  top: 10px;
-  margin-right: 15px;
-`
-const CopyPasteShare = styled.input`
-  color: #666;
-  display: inline;
-  border: none;
-  width: 100%;
-`
 const OrFieldSet = styled.fieldset`
   border-top: 1px solid #ccc;
   border-bottom: 1px solid transparent;
@@ -169,20 +147,12 @@ const LastNameInput = styled.input`
   padding: 5px;
 `
 
-const AddANoteInput = styled.input`
-  height: 100px;
-  width: 100%;
-  margin-top: 8px;
-  margin-bottom: 30px;
-  display: inline;
-  border: 1px solid rgb(153, 153, 153);
-  border-radius: 3px;
-`
 const SubTitle = styled.p`
   display: inline; 
   color: #999999; 
   font-size: .75rem;
   font-weight: normal;
+  text-align: right;
 `
 const ShareModalButton = styled.div`
   width: 100%;
@@ -219,7 +189,7 @@ const TOSandPrivacyStatement = styled.p`
   text-align: center;
 `
 const ModalBody = styled.div`
-  margin: 20px 30px;
+  margin: 10px 30px 20px;
 `
 
 const TOSandPrivacyLink = styled.a`
@@ -264,8 +234,8 @@ const BirthdayYearSelect = styled.select`
   padding: 5px;
 `
 
-const DefaultOption = styled.option`
-  color: #666;
+const OnYelp = styled.div`
+  text-align: right;
 `
 
 const SaveModal = (props) => {
@@ -329,9 +299,9 @@ const SaveModal = (props) => {
         </BirthdayContainer>
         <ShareModalButton>Sign Up</ShareModalButton>
       </SignUpForm>
-      <div>
+      <OnYelp>
         <SubTitle>Already on Yelp? <TOSandPrivacyLink>Login</TOSandPrivacyLink></SubTitle>
-      </div>
+      </OnYelp>
       </ModalBody>
     </ModalContent>
   )

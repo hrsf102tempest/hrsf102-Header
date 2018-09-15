@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import React, {Component} from 'react';
 
 const ModalContent = styled.div`
-  width: 465px;
+  width: 382px;
   position: absolute;
   top: 10%;
   left: 50%;
@@ -14,7 +14,6 @@ const ModalContent = styled.div`
   z-index: 3000;
 `
 ModalContent.displayName = "ModalContent";
-
 
 const ModalTopHeader = styled.div`
   padding: 0px 48px 0px 0px;
@@ -125,7 +124,7 @@ const OrLegend = styled.legend`
 const SignUpForm = styled.form`
   text-align: left;
   `
-const SignUpLabel = styled.label`
+const CategoriesInputLabel = styled.label`
   color: black;
   font-weight: 600;
   display: inline-block;
@@ -151,7 +150,7 @@ const AddANoteInput = styled.input`
   border-radius: 3px;
 `
 const SubTitle = styled.p`
-  display: inline; 
+  display: block; 
   color: #999999; 
   font-size: .75rem;
   font-weight: normal;
@@ -173,37 +172,19 @@ const ShareModalButton = styled.div`
     background: #ff1a1a;
   }
 `
-const ShareModal = (props) => {
+
+const EditModal = (props) => {
+  console.log("props from edit modal", props)
   return (
     <ModalContent>
       <ModalTopHeader>
         <ModalClose onClick={() => props.toggleModal(null)}><i className="fas fa-times"></i></ModalClose>
-        <ModalTitle>Share business</ModalTitle>
+        <ModalTitle>Add or remove categories</ModalTitle>
       </ModalTopHeader>
-        <ShareButtonContainer>
-      <ShareButtonFacebook><FacebookShareIcon className="fab fa-facebook-f"></FacebookShareIcon> Share on Facebook</ShareButtonFacebook>
-      <ShareButtonTwitter><i className="fab fa-twitter"></i> Share on Twitter</ShareButtonTwitter>
-      </ ShareButtonContainer>
-      <PesudoInput>
-        <ShareButton className="fas fa-share-square"></ShareButton>
-        <CopyPasteShare type="text" defaultValue={window.location} />  
-      </PesudoInput>
-      <OrFieldSet>
-        <OrLegend>OR</OrLegend>
-      </OrFieldSet>
-      <SignUpForm>
-        <SignUpLabel>Your Name</SignUpLabel>
-        <SignUpInput type="text"></SignUpInput>
-        <SignUpLabel>Your Email</SignUpLabel>
-        <SignUpInput type="text"></SignUpInput>
-        <SignUpLabel>To <SubTitle>Email address</SubTitle></SignUpLabel>
-        <SignUpInput type="text"></SignUpInput>
-        <SignUpLabel>Add a Note <SubTitle>Optional</SubTitle></SignUpLabel>
-        <AddANoteInput type="text"></AddANoteInput>
-        <ShareModalButton>Share</ShareModalButton>
-      </SignUpForm>
+      <CategoriesInputLabel>Select up to 3 categories</CategoriesInputLabel>
+      <SubTitle>The more specific the better.</SubTitle>
     </ModalContent>
   )
 }
 
-export default ShareModal;
+export default EditModal;

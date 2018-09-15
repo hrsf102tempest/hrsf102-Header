@@ -115,7 +115,7 @@ const DollarSignsAndCategories = (props) => {
       <Categories id="categories">
         {categories.map((category) => category)}
       </Categories>
-      <EditButton>
+      <EditButton onClick={() => props.toggleModal("edit")}>
         <EditLink href="#">
           <EditIcon className="fas fa-pencil-alt"></EditIcon> Edit
           <ToolTip id="ToolTip">Edit Categories</ToolTip>

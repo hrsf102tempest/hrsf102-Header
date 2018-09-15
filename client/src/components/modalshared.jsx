@@ -8,7 +8,9 @@ const Modal = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   visibility: ${props => props.isModal ? "visible" : "hidden"};
+  z-index: 2000;
 `
+
 Modal.displayName = "Modal";
 
 const ModalContent = styled.div`
