@@ -2,24 +2,89 @@ import styled, { css } from 'styled-components';
 import React from 'react'
 
 const Dollars = styled.div`
-  line-height: 21px;
   color: #666;
 `
 
 const DollarsDot = styled.i`
-  font-size: 0.1rem;
+  font-size: 0.05rem;
   display: inline;
   color: #666666;
   top: -10px;
-  margin: 1px;
-  padding-left: 3px;
+  padding: 0px 8px;
   vertical-align: middle;
 `
 
 const CategoryLink = styled.a`
   color: #0073BB;
   text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
 `
+CategoryLink.displayName = "CateogryLink"
+
+const EditButton = styled.button`
+  border-radius: 3px;
+  border-width: 1px;
+  padding: 3px 5px;
+  margin-left: 10px;
+  border-style: solid;
+  border-color: #ccc;
+  color: #A3A3A3;
+  background-color: #F5F5F5;
+  font-size: .7rem;
+`
+const EditLink = styled.a`
+  text-decoration: none;
+  color: #A3A3A3;
+  position: relative; 
+  &:hover #ToolTip{
+    visibility: visible;
+  }
+  &:hover{
+    color: black;
+  }
+`
+const EditIcon = styled.i`
+  padding-right: 2px;
+`
+
+const ToolTip = styled.span`
+  visibility: hidden;
+  width: 90px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  opacity: 0.9;
+
+  position: absolute;
+  z-index: 1;
+  top: -35px;
+  left: -25px;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+`
+ToolTip.displayName = 'ToolTip';
+
+const DollarSigns = styled.span`
+`
+
+DollarSigns.displayName = 'DollarSigns';
+
+const Categories = styled.span`
+`
+
+Categories.displayName = 'Categories';
 
 const DollarSignsAndCategories = (props) => {
 
@@ -39,13 +104,23 @@ const DollarSignsAndCategories = (props) => {
         categories.push(<CategoryLink key={i} href="#">{propCategories[i].childCategory}, </CategoryLink>)
       }
     }
-    console.log(categories);
-    // categories = categories.join(", ")
   }
   
   return (
     <Dollars>
-      {dollarSigns}<DollarsDot className="fas fa-circle fa-xs"></DollarsDot> {categories.map((category) => category)}
+      <DollarSigns id="dollarsigns">
+        {dollarSigns}
+      </DollarSigns>
+      <DollarsDot className="fas fa-circle fa-xs"></DollarsDot>
+      <Categories id="categories">
+        {categories.map((category) => category)}
+      </Categories>
+      <EditButton onClick={() => props.toggleModal("edit")}>
+        <EditLink href="#">
+          <EditIcon className="fas fa-pencil-alt"></EditIcon> Edit
+          <ToolTip id="ToolTip">Edit Categories</ToolTip>
+        </EditLink>
+      </EditButton>
     </Dollars>
   )
 }

@@ -8,7 +8,8 @@ const StarWrapper = styled.div`
   line-height: 24px;
   display: blocK;
 `
-const NumberOfReviews = styled.div`
+
+const ReviewsSection = styled.div`
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   font-size: 16px;
   color: #666666;
@@ -24,22 +25,103 @@ const Rating = styled.div`
   width: 132px;
   height: 24px;
   background-image: url("stars.png");
-  background-position: 0 -168px;
-  position: relative;
+  // Yelp renders their stars by showing a certain part of stars.png based on the rating. 
+  // I created this formula by messing around with different yelp ratings I found for businesses 
+  background-position: 0 ${props => ((-216 - (2* (5 - props.averageScore)) * -24) + 'px')};
+  position: relative; 
+`
+Rating.displayName = "Rating"
+
+const DetailButton = styled.button`
+  border-radius: 3px;
+  border-width: 1px;
+  padding: 3px 5px;
+  margin-left: 10px;
+  border-style: solid;
+  border-color: #ccc;
+  color: #A3A3A3;
+  background-color: #F5F5F5;
+  font-size: .7rem;
+  `
+const Chart = styled.i`
+  padding-right: 5px;
 `
 
+const Link = styled.a`
+  text-decoration: none;
+  color: #A3A3A3;
+  position: relative;
+  &:hover #ToolTipNext{
+    visibility: visible;
+  }
+  &:hover{
+    color: black;
+  }
+`
+const NumberOfReviews = styled.span`
+`
+NumberOfReviews.displayName = "NumberOfReviews"
 
+const ToolTipNext = styled.span`
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  opacity: 0.9;
+
+  position: absolute;
+  z-index: 1;
+  top: -35px;
+  left: 25px;
+  margin-left: -50px;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+`
 const StarsAndReviews = (props) => {
+  // this section allows us to find the average score given the score for each month. 
+  // take the score per month and divide it by the number of months coutned
+  let averageScore = 0;
+  let monthsCounter = 0;
+  for (let year in props.reviews){
+    for (let month in props.reviews[year]){
+      averageScore += props.reviews[year][month];
+      monthsCounter ++;
+    }
+  }
 
-  console.log("props from the stars side", props)
-
+  // after finding the average score, we have to to round the number to the nearest .5 (because thats how yelp displays their ratings)
+  // to do this, double the average score, round it to the nearest int, then divide the result by 2. 
+  averageScore = (Math.round((averageScore / monthsCounter) * 2) / 2);
+  console.log("Props from Stars", props)
   return (
     <StarWrapper>
-      <Rating height="303" width="84" /> 
-      <ActionButtons />
-      <NumberOfReviews> {props.numberOfReviews} reviews</NumberOfReviews>
+      <Rating averageScore={averageScore} id="rating"/> 
+      <ReviewsSection>
+        <NumberOfReviews id="numberofreviews">
+          {props.numberOfReviews} reviews
+        </NumberOfReviews>
+       <DetailButton>
+        <Link href="#">
+          <Chart className="fas fa-chart-bar"></Chart>
+          Details<ToolTipNext id="ToolTipNext">
+          Rating Detail</ToolTipNext>
+        </Link>
+      </DetailButton>
+      <ActionButtons toggleModal={props.toggleModal} />
+      </ReviewsSection>
     </StarWrapper>
   )
 }
 
-export default StarsAndReviews;
+export default StarsAndReviews

@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components';
 import React, {Component} from 'react'
 import DollarSignsAndCategories from './dollarsignsandCategories.jsx';
 import StarsAndReviews from './stars.jsx'
+import {Modal, ModalContent} from './modalshared.jsx';
+import ShareModal from './sharemodal.jsx'
+import SaveModal from './saveModal.jsx'
+import EditModal from './editModal.jsx'
 
 const Title = styled.h1`
   font-size: 30px;
@@ -16,6 +20,7 @@ const BizWrapper = styled.div`
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
   font-weight: 700:
 `
+
 const ClaimedCheck = styled.i`
   color: #0073BB;
   font-size: 1.10rem;
@@ -27,16 +32,16 @@ const ClaimedText = styled.div`
   font-weight: 400;
 `
 
-
-
-
 class Header extends React.Component {
   constructor(props){
     super (props)
 
     this.state = {
-      businessData: {}
+      businessData: {},
+      isModal: false, // should default to false
+      modalState: null // should default to "" 
     }
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount(){
@@ -64,24 +69,44 @@ class Header extends React.Component {
     })
   }
 
+  toggleModal(modalType){
+    this.setState({
+      isModal: !this.state.isModal,
+      modalState: modalType
+    })
+  }
+
   render() {
-    console.log("inital state", this.state);
-    
+    console.log("state from header", this.state)
+    let modalContentState
+      
+    if (this.state.modalState === "share") {
+      modalContentState = <ShareModal toggleModal={this.toggleModal}/>
+    } else if (this.state.modalState === "save"){
+      modalContentState = <SaveModal toggleModal={this.toggleModal}/>
+    } else if (this.state.modalState === "edit"){
+      modalContentState = <EditModal toggleModal={this.toggleModal} categories={this.state.businessData.categories}/>
+    }
     return (
       <BizWrapper>
+        <Modal onClick={() => this.toggleModal(null)} isModal={this.state.isModal}>
+        </Modal>
+        {modalContentState}
+        
         <Title>
-          {this.state.businessData.name + " "} 
-              {this.state.businessData.claimed === true &&
-                <ClaimedText> 
-                <ClaimedCheck className="fas fa-check-circle" /> 
-                 Claimed
-                </ ClaimedText> 
-              }
+          <span id="title">
+            {this.state.businessData.name}
+          </span>
+            {this.state.businessData.claimed === true &&
+              <ClaimedText> 
+              <ClaimedCheck className="fas fa-check-circle" /> 
+                Claimed
+              </ ClaimedText> 
+            }
         </Title>
-        <StarsAndReviews reviews={this.state.businessData.reviews} numberOfReviews={this.state.businessData.totalReviews}/>
-        <DollarSignsAndCategories dollarSigns={this.state.businessData.dollarSigns} categories={this.state.businessData.categories}/> 
+        <StarsAndReviews toggleModal={this.toggleModal} reviews={this.state.businessData.reviews} numberOfReviews={this.state.businessData.totalReviews}/>
+        <DollarSignsAndCategories toggleModal={this.toggleModal} dollarSigns={this.state.businessData.dollarSigns} categories={this.state.businessData.categories}/> 
       </ BizWrapper>
-
     )
   }
 }
