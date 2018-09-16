@@ -130,6 +130,7 @@ const CategoriesInputLabel = styled.label`
   display: inline-block;
   margin-bottom: 3px;
   font-size: 14px;
+  margin-bottom: 6px;
 `
 
 const SignUpInput = styled.input`
@@ -154,7 +155,9 @@ const SubTitle = styled.p`
   color: #999999; 
   font-size: .75rem;
   font-weight: normal;
+  margin-top: 0px;
 `
+
 const ShareModalButton = styled.div`
   border-color: #8d0005;
   border-radius: 3px;
@@ -162,21 +165,58 @@ const ShareModalButton = styled.div`
   border-style: solid 1px;
   display: inline;
   padding: 8px;
-  margin-right: 12px;
-  background-color: #DF1201;
+  background-colors: #DF1201;
   background: linear-gradient(#d90007, #c91400);
   color: white;
   font-size: 14px;
   font-weight: bold;
   &:hover{
+    cursor: pointer;
     background: #ff1a1a;
   }
+`
+
+const SingleCategory = styled.div`
+  margin: 6px 0;
+  vertical-align: baseline; 
+  font-size: 13px;
+  font-weight: 400;
+`
+const CategoriesContainer = styled.div`
+  margin-bottom: 30px;
+` 
+
+const Link = styled.a`
+  color: #0073BB;
+  text-decoration: none;
+  margin-left: 12px;
+  font-size: 12px;
+  &:hover{
+    text-decoration: underline;
+    cursor: pointer; 
+  }
+`
+
+const AngleIcon = styled.i`
+  padding: 0 5px;
 `
 
 const EditModal = (props) => {
   console.log("props from edit modal", props)
 
-  const editCategoriesToRender = [];
+  let editCategoriesToRender = [];
+
+  console.log("prop cateogries", props.categories)
+  if (props.categories) {
+    editCategoriesToRender = props.categories.map((category) => 
+      <SingleCategory>
+        {category.parentCategory} 
+        <AngleIcon className="fas fa-angle-right"></AngleIcon> 
+        {category.childCategory}
+        <Link>Remove</Link>
+      </SingleCategory>
+    )
+  }
 
   return (
     <ModalContent>
@@ -186,6 +226,11 @@ const EditModal = (props) => {
       </ModalTopHeader>
       <CategoriesInputLabel>Select up to 3 categories</CategoriesInputLabel>
       <SubTitle>The more specific the better.</SubTitle>
+      <CategoriesContainer>
+        {editCategoriesToRender}
+      </CategoriesContainer>
+      <ShareModalButton>Submit</ShareModalButton>
+      <Link onClick={() => props.toggleModal(null)}>Cancel</Link>
     </ModalContent>
   )
 }

@@ -23,6 +23,7 @@ const WriteAReview = styled.div`
   font-weight: bold;
   &:hover{
     background: #ff1a1a;
+    cursor: pointer;
   }
 `
 

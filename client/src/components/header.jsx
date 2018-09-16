@@ -24,7 +24,7 @@ const BizWrapper = styled.div`
 const ClaimedCheck = styled.i`
   color: #0073BB;
   font-size: 1.10rem;
-  padding-right: 5px;
+  padding: 0 5px 0 10px;
 `
 const ClaimedText = styled.div`
   font-size: 14px;
@@ -39,7 +39,7 @@ class Header extends React.Component {
     this.state = {
       businessData: {},
       isModal: false, // should default to false
-      modalState: null // should default to "" 
+      modalState: null // should default to null
     }
     this.toggleModal = this.toggleModal.bind(this);
   }
