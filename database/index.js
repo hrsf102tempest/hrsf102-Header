@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/yelpest');
+mongoose.connect('mongodb://localhost/yelpest', { useNewUrlParser: true });
 
 let businessSchema = mongoose.Schema({
   id: Number,
