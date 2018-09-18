@@ -14,13 +14,13 @@ describe("ActionButton Component Testing", () => {
     
     test ("There Should be Three Side Button components", () => {
       const wrapper = shallow(<ActionButtons />);
-      const text = wrapper.find("SideButton").length
+      const text = wrapper.find("#sidebutton").length
       expect(text).toBe(3)
     })
   
     test ("Share Button Should toggle modal state", () => {
       const wrapper = shallow(<ActionButtons />);
-      expect(wrapper.instance().state.modalState).toEqual("");
+      expect(wrapper.instance().state.modalState).toEqual(null);
       expect(wrapper.instance().state.isModal).toEqual(false);
       
       wrapper.find("#ShareButton").simulate('click');
@@ -31,7 +31,7 @@ describe("ActionButton Component Testing", () => {
   
     test ("Save Button Should toggle modal state", () => {
       const wrapper = shallow(<ActionButtons />);
-      expect(wrapper.instance().state.modalState).toEqual("");
+      expect(wrapper.instance().state.modalState).toEqual(null);
       expect(wrapper.instance().state.isModal).toEqual(false);
       
       wrapper.find("#SaveButton").simulate('click');

@@ -24,7 +24,7 @@ const Rating = styled.div`
   margin-right: 6px;
   width: 132px;
   height: 24px;
-  background-image: url("stars.png");
+  background-image: url("http://127.0.0.1:3004/biz/stars.png");
   // Yelp renders their stars by showing a certain part of stars.png based on the rating. 
   // I created this formula by messing around with different yelp ratings I found for businesses 
   background-position: 0 ${props => ((-216 - (2* (5 - props.averageScore)) * -24) + 'px')};
