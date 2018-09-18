@@ -1,6 +1,3 @@
-import Header from './components/Header.jsx'
+import Header from './components/Header';
 
-ReactDOM.render(
-  <Header />,
-  document.getElementById('root')
-);
+ReactDOM.render(<Header  />, document.getElementById('root'));

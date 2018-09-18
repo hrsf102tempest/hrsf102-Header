@@ -1,11 +1,12 @@
-import styled, { css } from 'styled-components';
-import React, {Component} from 'react';
+import styled from 'styled-components';
+import React from 'react';
 
 const ActionButtonsDiv = styled.div`
   text-align: right;
   display: inline;
   float: right;
-`
+`;
+
 ActionButtonsDiv.displayName = 'ActionButtonsDiv';
 
 const WriteAReview = styled.div`
@@ -16,22 +17,23 @@ const WriteAReview = styled.div`
   display: inline;
   padding: 8px;
   margin-right: 12px;
-  background-color: #DF1201;
+  background-color: #df1201;
   background: linear-gradient(#d90007, #c91400);
   color: white;
   font-size: 14px;
   font-weight: bold;
-  &:hover{
+  &:hover {
     background: #ff1a1a;
     cursor: pointer;
   }
-`
+`;
 
 WriteAReview.displayName = 'WriteAReview';
 
 const Star = styled.i`
   padding-right: 5px;
-`
+`;
+
 const SideButton = styled.button`
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 1px;
@@ -41,13 +43,14 @@ const SideButton = styled.button`
   color: #666;
   background-color: #f7f7f7;
   font-weight: bold;
-  font-size: .7rem;
+  font-size: 0.7rem;
   display: inline;
-  &:hover{
+  &:hover {
     background: #fffff1;
     cursor: pointer;
   }
-`
+`;
+
 const SideButtonPhoto = styled.button`
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 1px;
@@ -58,13 +61,13 @@ const SideButtonPhoto = styled.button`
   color: #666;
   background-color: #f7f7f7;
   font-weight: bold;
-  font-size: .7rem;
+  font-size: 0.7rem;
   display: inline;
-  &:hover{
+  &:hover {
     background: #fffff1;
     cursor: pointer;
   }
-`
+`;
 
 const SideButtonShare = styled.button`
   border-radius: 3px;
@@ -76,54 +79,52 @@ const SideButtonShare = styled.button`
   color: #666;
   background-color: #f7f7f7;
   font-weight: bold;
-  font-size: .7rem;
+  font-size: 0.7rem;
   display: inline;
-  &:hover{
+  &:hover {
     background: #fffff1;
     cursor: pointer;
   }
-`
+`;
 SideButton.displayName = 'SideButton';
 
 const WriteAReviewLink = styled.a`
   text-decoration: none;
   color: white;
-`
-WriteAReviewLink.displayName = "WriteAReviewLink"
+`;
+
+WriteAReviewLink.displayName = 'WriteAReviewLink';
 
 const Link = styled.a`
   color: #666;
   text-decoration: none;
-`
+`;
 
-const ActionButtons = (props) => {  
-  console.log("props from action buttons", props)
+const ActionButtons = props => {
+  console.log('props from action buttons', props);
   return (
     <ActionButtonsDiv>
-    <WriteAReview>
-      <Star className="fas fa-star" />
-      <WriteAReviewLink href="#">Write A Review</ WriteAReviewLink>
-    </WriteAReview>
-    <SideButtonPhoto>
-      <Link href="#">
-      <i className="fas fa-camera"></i>  Add Photo
-      </Link>
-    </SideButtonPhoto>
-
-    <SideButtonShare id="ShareButton" onClick={() => props.toggleModal("share")}>
-      <Link href="#">
-        <i className="fas fa-share-square"></i>  Share
-      </Link>
-    </SideButtonShare>
-
-    <SideButton id="SaveButton" onClick={() => props.toggleModal("save")}>
-      <Link href="#">
-      <i className="fas fa-bookmark"></i>  Save
-      </Link>
-    </SideButton>
-</ActionButtonsDiv>
-)
-}
-
+      <WriteAReview>
+        <Star className="fas fa-star" />
+        <WriteAReviewLink href="#">Write A Review</WriteAReviewLink>
+      </WriteAReview>
+      <SideButtonPhoto className="sidebutton">
+        <Link href="#">
+          <i className="fas fa-camera" /> Add Photo
+        </Link>
+      </SideButtonPhoto>
+      <SideButtonShare className="sidebutton" id="ShareButton" onClick={() => props.toggleModal('share')}>
+        <Link href="#">
+          <i className="fas fa-share-square" /> Share
+        </Link>
+      </SideButtonShare>
+      <SideButton className="sidebutton" id="SaveButton" onClick={() => props.toggleModal('save')}>
+        <Link href="#">
+          <i className="fas fa-bookmark" /> Save
+        </Link>
+      </SideButton>
+    </ActionButtonsDiv>
+  );
+};
 
 export default ActionButtons;
