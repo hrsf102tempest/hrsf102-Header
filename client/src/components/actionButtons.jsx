@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ActionButtonsDiv = styled.div`
   text-align: right;
@@ -100,8 +101,12 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
+const ActionButtonIcon = styled.i`
+  padding-right: 5px;
+`;
+
 const ActionButtons = props => {
-  console.log('props from action buttons', props);
+  const { toggleModal } = props;
   return (
     <ActionButtonsDiv>
       <WriteAReview>
@@ -110,21 +115,25 @@ const ActionButtons = props => {
       </WriteAReview>
       <SideButtonPhoto className="sidebutton">
         <Link href="#">
-          <i className="fas fa-camera" /> Add Photo
+          <ActionButtonIcon className="fas fa-camera" />Add Photo
         </Link>
       </SideButtonPhoto>
-      <SideButtonShare className="sidebutton" id="ShareButton" onClick={() => props.toggleModal('share')}>
+      <SideButtonShare className="sidebutton" id="ShareButton" onClick={() => toggleModal('share')}>
         <Link href="#">
-          <i className="fas fa-share-square" /> Share
+          <ActionButtonIcon className="fas fa-share-square" />Share
         </Link>
       </SideButtonShare>
-      <SideButton className="sidebutton" id="SaveButton" onClick={() => props.toggleModal('save')}>
+      <SideButton className="sidebutton" id="SaveButton" onClick={() => toggleModal('save')}>
         <Link href="#">
-          <i className="fas fa-bookmark" /> Save
+          <ActionButtonIcon className="fas fa-bookmark" />Save
         </Link>
       </SideButton>
     </ActionButtonsDiv>
   );
+};
+
+ActionButtons.propTypes = {
+  toggleModal: PropTypes.func.isRequired
 };
 
 export default ActionButtons;

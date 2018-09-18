@@ -168,6 +168,7 @@ const SubTitle = styled.p`
   color: #999999;
   font-size: 0.75rem;
   font-weight: normal;
+  padding-left: 5px;
 `;
 
 const ShareModalButton = styled.div`
@@ -188,40 +189,53 @@ const ShareModalButton = styled.div`
   }
 `;
 
-const ShareModal = props => (
-
-  <ModalContent>
-    <ModalTopHeader>
-      <ModalClose onClick={() => props.toggleModal(null)}><i className="fas fa-times"></i></ModalClose>
-      <ModalTitle>Share business</ModalTitle>
-    </ModalTopHeader>
+const ShareModal = props => {
+  const { toggleModal } = props
+  return (
+    <ModalContent>
+      <ModalTopHeader>
+        <ModalClose onClick={() => toggleModal(null)}><i className="fas fa-times" /></ModalClose>
+        <ModalTitle>Share business</ModalTitle>
+      </ModalTopHeader>
       <ShareButtonContainer>
-    <ShareButtonFacebook><FacebookShareIcon className="fab fa-facebook-f"></FacebookShareIcon> Share on Facebook</ShareButtonFacebook>
-    <ShareButtonTwitter><i className="fab fa-twitter"></i> Share on Twitter</ShareButtonTwitter>
-    </ ShareButtonContainer>
-    <PesudoInput>
-      <ShareButton className="fas fa-share-square"></ShareButton>
-      <CopyPasteShare type="text" defaultValue={window.location} />  
-    </PesudoInput>
-    <OrFieldSet>
-      <OrLegend>OR</OrLegend>
-    </OrFieldSet>
-    <SignUpForm>
-      <SignUpLabel>Your Name</SignUpLabel>
-      <SignUpInput type="text"></SignUpInput>
-      <SignUpLabel>Your Email</SignUpLabel>
-      <SignUpInput type="text"></SignUpInput>
-      <SignUpLabel>To <SubTitle>Email address</SubTitle></SignUpLabel>
-      <SignUpInput type="text"></SignUpInput>
-      <SignUpLabel>Add a Note <SubTitle>Optional</SubTitle></SignUpLabel>
-      <AddANoteInput type="text"></AddANoteInput>
-      <ShareModalButton>Share</ShareModalButton>
-    </SignUpForm>
-  </ModalContent>
-  );
+        <ShareButtonFacebook>
+          <FacebookShareIcon className="fab fa-facebook-f" />
+          Share on Facebook
+        </ShareButtonFacebook>
+        <ShareButtonTwitter>
+          <FacebookShareIcon className="fab fa-twitter" />
+          Share on Twitter
+        </ShareButtonTwitter>
+      </ShareButtonContainer>
+      <PesudoInput>
+        <ShareButton className="fas fa-share-square" />
+        <CopyPasteShare type="text" defaultValue={window.location} />
+      </PesudoInput>
+      <OrFieldSet>
+        <OrLegend>OR</OrLegend>
+      </OrFieldSet>
+      <SignUpForm>
+        <SignUpLabel>Your Name</SignUpLabel>
+        <SignUpInput type="text" />
+        <SignUpLabel>Your Email</SignUpLabel>
+        <SignUpInput type="text" />
+        <SignUpLabel>To 
+          <SubTitle>Email address</SubTitle>
+        </SignUpLabel>
+        <SignUpInput type="text" />
+        <SignUpLabel>
+          Add a Note 
+          <SubTitle>Optional</SubTitle>
+        </SignUpLabel>
+        <AddANoteInput type="text" />
+        <ShareModalButton>Share</ShareModalButton>
+      </SignUpForm>
+    </ModalContent>
+)
+};
 
 ShareModal.propTypes = {
-  toggleModal: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired
 };
 
 export default ShareModal;
