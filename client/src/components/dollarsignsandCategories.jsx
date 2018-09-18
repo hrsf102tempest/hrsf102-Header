@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+  import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -47,7 +47,7 @@ const EditLink = styled.a`
   }
 `;
 const EditIcon = styled.i`
-  padding-right: 2px;
+  padding-right: 5px;
 `;
 
 const ToolTip = styled.span`

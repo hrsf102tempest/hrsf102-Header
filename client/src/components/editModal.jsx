@@ -145,3 +145,4 @@ EditModal.propTypes = {
 };
 
 export default EditModal;
+
